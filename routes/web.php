@@ -22,3 +22,25 @@ use App\Http\Controllers\FormController;
 Route::get('/input', [FormController::class, 'input']); 
 // page setelah input form
 Route::post('/proses', [FormController::class, 'proses']);
+
+//route untuk artikel
+use App\Http\Controllers\ArticleController;
+Route::get("/article", [ArticleController::class, 'index']);
+Route::get('/article/{article:slug}', [ArticleController::class, 'content']);
+
+// route untuk category
+use App\Models\Category;
+Route::get('/categories/{category:slug}', function(Category $category){
+    return view('article',[
+       'title' => $category->name,
+       'articles' => $category->articles,
+       'category' => $category->name 
+    ]);
+});
+// untuk menampilkan semua category yg ada
+Route::get('/categories', function(){
+    return view('categories',[
+        'title' => 'Post Categories',
+        'categories' => Category::all()
+     ]);
+});
