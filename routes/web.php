@@ -28,8 +28,8 @@ use App\Http\Controllers\ArticleController;
 Route::get("/article", [ArticleController::class, 'index']);
 Route::get('/article/{article:slug}', [ArticleController::class, 'content']);
 
-// route untuk category
 use App\Models\Category;
+// untuk menampilkan post dengan kategori sama
 Route::get('/categories/{category:slug}', function(Category $category){
     return view('article',[
        'title' => $category->name,
@@ -37,10 +37,19 @@ Route::get('/categories/{category:slug}', function(Category $category){
        'category' => $category->name 
     ]);
 });
-// untuk menampilkan semua category yg ada
+// untuk menampilkan semua category yang ada
 Route::get('/categories', function(){
     return view('categories',[
         'title' => 'Post Categories',
         'categories' => Category::all()
      ]);
+});
+
+use App\Models\User;
+// untuk menampilkan post dengan nama author sama
+Route::get('/authors/{author:username}', function(User $author){
+    return view('article',[
+       'title' => $author->name,
+       'articles' => $author->articles,
+    ]);
 });

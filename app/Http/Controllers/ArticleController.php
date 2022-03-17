@@ -11,7 +11,9 @@ class ArticleController extends Controller
         return view('article', [
             "name" => "Erza Janitradevi",
             "email" => "erzaa@gmail.com",
-            "articles" =>  Article::all(),
+            // supaya menampilkan dari postingan terbaru
+            "articles" =>  Article::latest()->get(),
+            // "articles" =>  Article::all(),
             // refer ke article.php
             "title" => "Artikel Berita"
         ]);

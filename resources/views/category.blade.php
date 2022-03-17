@@ -1,4 +1,4 @@
-@extends('layout.template')
+@extends('template')
 {{-- /categories/Programming --}}
 {{-- buat tampilin post2 yg masuk kategori --}}
 @section('container')
