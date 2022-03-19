@@ -17,9 +17,8 @@ class Article extends Model
 
     public function author(){
         // relasi dengan user 
-        // 1 postingan punya 1 kategori
+        // 1 postingan dimiliki 1 user
         return $this->belongsTo(User::class,'user_id');
         
-        // return $this->belongsTo(User::class,'user_id');
     }
 }

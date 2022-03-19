@@ -18,8 +18,8 @@ class ArticleFactory extends Factory
             'slug' => $this->faker->slug(),
             'excerpt' => $this->faker->paragraph(),
             'body' => $this->faker->paragraph(mt_rand(5,10)),
-            'category_id' => mt_rand(1,3),
-            'user_id' => mt_rand(1,3),
+            'category_id' => mt_rand(1,4),
+            'user_id' => mt_rand(1,5),
         ];
     }
 }
