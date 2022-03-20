@@ -12,7 +12,7 @@ class ArticleController extends Controller
             "name" => "Erza Janitradevi",
             "email" => "erzaa@gmail.com",
             // supaya menampilkan dari postingan terbaru
-            "articles" =>  Article::latest()->get(),
+            "articles" =>  Article::with('author','category')->latest()->get(),
             // "articles" =>  Article::all(),
             // refer ke article.php
             "title" => "Artikel Berita"

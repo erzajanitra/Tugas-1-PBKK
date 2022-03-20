@@ -32,9 +32,9 @@ use App\Models\Category;
 // untuk menampilkan post dengan kategori sama
 Route::get('/categories/{category:slug}', function(Category $category){
     return view('article',[
-       'title' => $category->name,
-       'articles' => $category->articles,
-       'category' => $category->name 
+       'title' => "Post by Category : $category->name",
+       'articles' => $category->articles->load('category','author'),
+    //    'category' => $category->name 
     ]);
 });
 // untuk menampilkan semua category yang ada
@@ -49,7 +49,7 @@ use App\Models\User;
 // untuk menampilkan post dengan nama author sama
 Route::get('/authors/{author:username}', function(User $author){
     return view('article',[
-       'title' => $author->name,
-       'articles' => $author->articles,
+       'title' => "Post by Author : $author->name",
+       'articles' => $author->articles->load('category','author'),
     ]);
 });
